@@ -1,0 +1,26 @@
+[
+    {
+        "status": 403,
+        "number": 450
+    },
+    {
+        "status": 301,
+        "number": 600
+    },
+    {
+        "status": 302,
+        "number": 150
+    },
+    {
+        "status": 500,
+        "number": 125
+    },
+    {
+        "status": 200,
+        "number": 4793
+    },
+    {
+        "status": 404,
+        "number": 1573
+    }
+]
