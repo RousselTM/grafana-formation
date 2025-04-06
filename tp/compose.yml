@@ -12,8 +12,8 @@ services:
       - GF_USERS_ALLOW_SIGN_UP=false
       
       #Admin 
-        # https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/#install-plugins-from-other-sources
       - GF_SERVER_ROOT_URL=http://my.grafana.server/
+        # https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/#install-plugins-from-other-sources
       - GF_PLUGINS_PREINSTALL=yesoreyeram-infinity-datasource,grafana-clock-panel
     restart: always
     ports:
