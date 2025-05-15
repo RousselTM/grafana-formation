@@ -14,6 +14,13 @@
         "views": 685102
     },
     {
+        "id": 3,
+        "title": "Vagrant",
+        "category": "Automatisation",
+        "image": "https://elearning.rousseltm.fr/admin/images/formations/3/3.jpg",
+        "views": 5102
+    },
+    {
         "id": 11,
         "title": "Grafana",
         "category": "observabilité",
