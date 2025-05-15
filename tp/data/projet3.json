@@ -4,20 +4,20 @@
         "title": "Docker",
         "category": "Conteneurisation",
         "image": "https://elearning.rousseltm.fr/admin/images/formations/1/1.jpg",
-        "views": 79472
+        "views": 790472
     },
     {
         "id": 2,
         "title": "Dynatrace",
         "category": "observabilité",
         "image": "https://elearning.rousseltm.fr/admin/images/formations/2/2.jpg",
-        "views": 68512
+        "views": 685102
     },
     {
         "id": 11,
         "title": "Grafana",
         "category": "observabilité",
         "image": "https://elearning.rousseltm.fr/admin/images/formations/11/11.jpg",
-        "views": 436745
+        "views": 836745
     }
 ]
