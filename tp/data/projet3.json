@@ -5,7 +5,8 @@
         "category": "Conteneurisation",
         "image": "https://elearning.rousseltm.fr/admin/images/formations/1/1.jpg",
         "views": 790472,
-        "certification": false
+        "certification": false,
+        "student": 894
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "category": "observabilité",
         "image": "https://elearning.rousseltm.fr/admin/images/formations/2/2.jpg",
         "views": 685102,
-        "certification": true
+        "certification": true,
+        "student": 1094
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "category": "Automatisation",
         "image": "https://elearning.rousseltm.fr/admin/images/formations/3/3.jpg",
         "views": 5102,
-        "certification": false
+        "certification": false,
+        "student": 300
     },
     {
         "id": 11,
@@ -29,6 +32,7 @@
         "category": "observabilité",
         "image": "https://elearning.rousseltm.fr/admin/images/formations/11/11.jpg",
         "views": 836745,
-        "certification": false
+        "certification": false,
+        "student": 2059
     }
 ]
