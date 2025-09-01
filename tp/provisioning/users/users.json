@@ -1,0 +1,27 @@
+apiVersion: 1
+
+users:
+  - name: Admin1
+    login: admin1@formation.rousseltm.fr
+    email: admin1@formation.rousseltm.fr
+    password: Admin123!
+    isAdmin: true
+
+  - name: Admin2
+    login: admin2@formation.rousseltm.fr
+    email: admin2@formation.rousseltm.fr
+    password: Admin123!
+    isAdmin: true
+
+  # Utilisateurs simples
+  - name: User1
+    login: user1@formation.rousseltm.fr
+    email: user1@formation.rousseltm.fr
+    password: User123!
+    isAdmin: false
+  - name: User2
+    login: user2@formation.rousseltm.fr
+    email: user2@formation.rousseltm.fr
+    password: User123!
+    isAdmin: false
+  # … jusqu'à User15

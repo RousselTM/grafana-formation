@@ -1,0 +1,6 @@
+folders:
+  - name: formation-grafana
+    title: formation-grafana
+    permissions:
+      - team: Users
+        role: Editor
