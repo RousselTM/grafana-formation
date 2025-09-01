@@ -4,7 +4,7 @@ services:
     image: grafana/grafana
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./../provisioning:/etc/grafana/provisioning
+      - ./provisioning:/etc/grafana/provisioning
     environment:
       # Auth 
       - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
@@ -12,8 +12,7 @@ services:
       - GF_USERS_ALLOW_SIGN_UP=false
       
       #Admin 
-      - GF_SERVER_ROOT_URL=http://my.grafana.server/
-        # https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/#install-plugins-from-other-sources
+      - GF_SERVER_ROOT_URL=https://demo.rousseltm.fr/
       - GF_PLUGINS_PREINSTALL=yesoreyeram-infinity-datasource,grafana-clock-panel
     restart: always
     ports:
@@ -24,10 +23,10 @@ services:
       - common-observability
     labels:
       - "org.label-schema.group=observability"    
-      #- "traefik.enable=true"
-      #- "traefik.http.routers.grafana.rule=Host(`grafana.rousseltm.fr`)"
-      #- "traefik.http.routers.grafana.entrypoints=websecure"
-      #- "traefik.http.routers.grafana.tls.certresolver=resolversmart"   
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`demo.rousseltm.fr`)"
+      - "traefik.http.routers.grafana.entrypoints=websecure"
+      - "traefik.http.routers.grafana.tls.certresolver=resolversmart"   
 
 volumes:
   grafana_data: {}
