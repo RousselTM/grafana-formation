@@ -1,4 +1,9 @@
 apiVersion: 1
 datasources:
   - name: Prometheus
+    uid: prometheus-prometheus
+    url: http://prometheus:9090
+  
+  - name: Infinity
+    uid: infinity-infinity
     url: http://prometheus:9090
