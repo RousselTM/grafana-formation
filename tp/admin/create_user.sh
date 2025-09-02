@@ -1,123 +1,104 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-# Charger variables depuis ../.env
-if [ ! -f "../.env" ]; then
+# Charger les variables d'environnement depuis le .env du dossier parent
+if [ -f ../.env ]; then
+  export $(grep -v '^#' ../.env | xargs)
+else
   echo "❌ Fichier ../.env introuvable"
   exit 1
 fi
-export $(grep -v '^#' ../.env | xargs)
 
+# Variables Grafana depuis .env
 GRAFANA_URL="${GRAFANA_URL:-http://localhost:3000}"
+GRAFANA_ADMIN_USER="${GRAFANA_ADMIN_USER:-admin}"
+GRAFANA_ADMIN_PASSWORD="${GRAFANA_ADMIN_PASSWORD:-admin}"
 
-# Vérifier jq et curl
-if ! command -v jq >/dev/null || ! command -v curl >/dev/null; then
-  echo "❌ jq et curl doivent être installés"
+AUTH="-u ${GRAFANA_ADMIN_USER}:${GRAFANA_ADMIN_PASSWORD}"
+
+# JSON contenant les utilisateurs
+USERS_JSON="users.json"
+
+if [ ! -f "$USERS_JSON" ]; then
+  echo "❌ Fichier $USERS_JSON introuvable"
   exit 1
 fi
 
-# Vérifier le fichier users.json
-if [ ! -f "users.json" ]; then
-  echo "❌ users.json introuvable"
-  exit 1
-fi
+# Fonction : créer un dossier s'il n'existe pas
+create_folder() {
+  local folder_name="$1"
+  folder_id=$(curl -s $AUTH "${GRAFANA_URL}/api/folders" | jq -r ".[] | select(.title==\"$folder_name\") | .id")
 
-# Fonction pour vérifier le code HTTP
-check_response() {
-  local code=$1
-  local msg=$2
-  if [ "$code" -ge 200 ] && [ "$code" -lt 300 ]; then
-    echo "✅ $msg"
-  elif [ "$code" -eq 412 ]; then
-    echo "⚠️ $msg déjà existant"
-  else
-    echo "❌ Erreur $code pour $msg"
-    exit 1
+  if [ -z "$folder_id" ]; then
+    echo "📁 Création du dossier : $folder_name"
+    folder_id=$(curl -s -X POST $AUTH \
+      -H "Content-Type: application/json" \
+      -d "{\"title\":\"$folder_name\"}" \
+      "${GRAFANA_URL}/api/folders" | jq -r '.id')
   fi
+
+  echo "$folder_id"
 }
 
-echo "🚀 Création du dossier formation-grafana..."
+# Vérifier et créer les dossiers nécessaires
+declare -A FOLDER_IDS
+for folder in grafana-correction grafana-formation; do
+  FOLDER_IDS[$folder]=$(create_folder "$folder")
+done
 
-# 1️⃣ Vérifier/créer le dossier
-folder_uid=$(curl -s -u "$GRAFANA_USER:$GRAFANA_PASSWORD" \
-  "$GRAFANA_URL/api/folders" | jq -r '.[] | select(.title=="formation-grafana") | .uid')
+# Créer les utilisateurs et gérer les permissions
+jq -c '.[]' "$USERS_JSON" | while read -r user; do
+  name=$(echo "$user" | jq -r '.name')
+  email=$(echo "$user" | jq -r '.email')
+  login=$(echo "$user" | jq -r '.login')
+  password=$(echo "$user" | jq -r '.password')
+  role=$(echo "$user" | jq -r '.role // empty')
 
-if [ -z "$folder_uid" ]; then
-  resp=$(curl -s -w "%{http_code}" -u "$GRAFANA_USER:$GRAFANA_PASSWORD" \
-    -H "Content-Type: application/json" \
-    -d '{"title":"formation-grafana"}' \
-    "$GRAFANA_URL/api/folders")
-  folder_uid=$(echo "$resp" | head -c -3 | jq -r '.uid')
-  code=$(echo "$resp" | tail -c 3)
-  check_response $code "Création du dossier formation-grafana"
-else
-  echo "ℹ️ Dossier existant : $folder_uid"
-fi
+  echo "👤 Création utilisateur : $login"
 
-echo "🚀 Création des teams..."
+  # Vérifier si l'utilisateur existe déjà
+  user_id=$(curl -s $AUTH "${GRAFANA_URL}/api/users/lookup?loginOrEmail=$login" | jq -r '.id // empty')
 
-# Créer une team
-create_team() {
-  local name="$1"
-  resp=$(curl -s -w "%{http_code}" -u "$GRAFANA_USER:$GRAFANA_PASSWORD" \
-    -H "Content-Type: application/json" \
-    -d "{\"name\":\"$name\"}" \
-    "$GRAFANA_URL/api/teams")
-  code=$(echo "$resp" | tail -c 3)
-  check_response $code "Création team $name"
-  echo "$resp" | head -c -3 | jq -r '.teamId'
-}
+  if [ -z "$user_id" ]; then
+    user_id=$(curl -s -X POST $AUTH \
+      -H "Content-Type: application/json" \
+      -d "{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$login\",\"password\":\"$password\"}" \
+      "${GRAFANA_URL}/api/admin/users" | jq -r '.id')
+  fi
 
-admin_team_id=$(create_team "Admins")
-users_team_id=$(create_team "Users")
-
-echo "🚀 Création des utilisateurs et assignation aux teams..."
-
-for row in $(jq -c '.[]' users.json); do
-  name=$(echo "$row" | jq -r '.name')
-  email=$(echo "$row" | jq -r '.email')
-  login=$(echo "$row" | jq -r '.login')
-  password=$(echo "$row" | jq -r '.password')
-  role=$(echo "$row" | jq -r '.role')
-
-  echo "➡️ Création utilisateur : $login ($role)"
-
-  # Création utilisateur
-  resp=$(curl -s -w "%{http_code}" -u "$GRAFANA_USER:$GRAFANA_PASSWORD" \
-    -H "Content-Type: application/json" \
-    -d "{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$login\",\"password\":\"$password\"}" \
-    "$GRAFANA_URL/api/admin/users")
-  code=$(echo "$resp" | tail -c 3)
-  check_response $code "Utilisateur $login"
-
-  # Récupérer l'ID de l'utilisateur
-  user_id=$(curl -s -u "$GRAFANA_USER:$GRAFANA_PASSWORD" \
-    "$GRAFANA_URL/api/users/lookup?loginOrEmail=$login" | jq '.id')
-
+  # Si Admin -> mettre le rôle global Admin
   if [ "$role" == "Admin" ]; then
-    # Ajouter à la team Admins
-    resp=$(curl -s -w "%{http_code}" -u "$GRAFANA_USER:$GRAFANA_PASSWORD" \
-      -X POST -H "Content-Type: application/json" \
-      -d "{\"userId\":$user_id}" \
-      "$GRAFANA_URL/api/teams/$admin_team_id/members")
-    code=$(echo "$resp" | tail -c 3)
-    check_response $code "Ajout $login à Admins"
-  else
-    # Ajouter à la team Users
-    resp=$(curl -s -w "%{http_code}" -u "$GRAFANA_USER:$GRAFANA_PASSWORD" \
-      -X POST -H "Content-Type: application/json" \
-      -d "{\"userId\":$user_id}" \
-      "$GRAFANA_URL/api/teams/$users_team_id/members")
-    code=$(echo "$resp" | tail -c 3)
-    check_response $code "Ajout $login à Users"
+    echo "⚙️ Attribution rôle Admin à $login"
+    curl -s -X PATCH $AUTH \
+      -H "Content-Type: application/json" \
+      -d '{"isGrafanaAdmin": true}' \
+      "${GRAFANA_URL}/api/admin/users/$user_id" >/dev/null
+  fi
 
-    # Donner permissions Editor à la team sur le dossier
-    resp=$(curl -s -w "%{http_code}" -u "$GRAFANA_USER:$GRAFANA_PASSWORD" \
-      -X POST -H "Content-Type: application/json" \
-      -d "[{\"role\":\"Editor\",\"teamId\":$users_team_id}]" \
-      "$GRAFANA_URL/api/folders/$folder_uid/permissions")
-    code=$(echo "$resp" | tail -c 3)
-    check_response $code "Permissions Editor sur formation-grafana pour team Users"
+  # Si user avec dossiers
+  if echo "$user" | jq -e '.folder' >/dev/null; then
+    for row in $(echo "$user" | jq -c '.folder[]'); do
+      folder_name=$(echo "$row" | jq -r '.folder')
+      folder_role=$(echo "$row" | jq -r '.role')
+
+      # Mapper les rôles Grafana
+      case "$folder_role" in
+        Reader) perm="Viewer" ;;
+        Editor) perm="Editor" ;;
+        Admin) perm="Admin" ;;
+        *) perm="Viewer" ;;
+      esac
+
+      folder_uid=$(curl -s $AUTH "${GRAFANA_URL}/api/folders" | jq -r ".[] | select(.title==\"$folder_name\") | .uid")
+
+      echo "📂 Attribution $perm sur dossier $folder_name à $login"
+
+      curl -s -X POST $AUTH \
+        -H "Content-Type: application/json" \
+        -d "{\"items\":[{\"userId\":$user_id,\"permission\":\"$perm\"}]}" \
+        "${GRAFANA_URL}/api/folders/$folder_uid/permissions" >/dev/null
+    done
   fi
 done
 
-echo "✅ Tous les utilisateurs et teams configurés avec permissions vérifiées."
+echo "✅ Provisioning terminé."

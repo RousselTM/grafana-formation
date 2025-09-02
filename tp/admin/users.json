@@ -1,136 +1,256 @@
 [
-  {
-    "name": "Admin1",
-    "email": "admin1@formation.rousseltm.fr",
-    "login": "admin1@formation.rousseltm.fr",
-    "password": "Admin123!",
-    "role": "Admin"
-  },
-  {
-    "name": "Admin2",
-    "email": "admin2@formation.rousseltm.fr",
-    "login": "admin2@formation.rousseltm.fr",
-    "password": "Admin123!",
-    "role": "Admin"
-  },
-  {
-    "name": "User1",
-    "email": "user1@formation.rousseltm.fr",
-    "login": "user1@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User2",
-    "email": "user2@formation.rousseltm.fr",
-    "login": "user2@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User3",
-    "email": "user3@formation.rousseltm.fr",
-    "login": "user3@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User4",
-    "email": "user4@formation.rousseltm.fr",
-    "login": "user4@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User5",
-    "email": "user5@formation.rousseltm.fr",
-    "login": "user5@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User6",
-    "email": "user6@formation.rousseltm.fr",
-    "login": "user6@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User7",
-    "email": "user7@formation.rousseltm.fr",
-    "login": "user7@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User8",
-    "email": "user8@formation.rousseltm.fr",
-    "login": "user8@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User9",
-    "email": "user9@formation.rousseltm.fr",
-    "login": "user9@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User10",
-    "email": "user10@formation.rousseltm.fr",
-    "login": "user10@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User11",
-    "email": "user11@formation.rousseltm.fr",
-    "login": "user11@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User12",
-    "email": "user12@formation.rousseltm.fr",
-    "login": "user12@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User13",
-    "email": "user13@formation.rousseltm.fr",
-    "login": "user13@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User14",
-    "email": "user14@formation.rousseltm.fr",
-    "login": "user14@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  },
-  {
-    "name": "User15",
-    "email": "user15@formation.rousseltm.fr",
-    "login": "user15@formation.rousseltm.fr",
-    "password": "User123!",
-    "role": "Editor",
-    "folder": "formation-grafana"
-  }
+    {
+        "name": "Admin1",
+        "email": "admin1@formation.rousseltm.fr",
+        "login": "admin1@formation.rousseltm.fr",
+        "password": "Admin123!",
+        "role": "Admin"
+    },
+    {
+        "name": "Admin2",
+        "email": "admin2@formation.rousseltm.fr",
+        "login": "admin2@formation.rousseltm.fr",
+        "password": "Admin123!",
+        "role": "Admin"
+    },
+    {
+        "name": "User1",
+        "email": "user1@formation.rousseltm.fr",
+        "login": "user1@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User2",
+        "email": "user2@formation.rousseltm.fr",
+        "login": "user2@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User3",
+        "email": "user3@formation.rousseltm.fr",
+        "login": "user3@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User4",
+        "email": "user4@formation.rousseltm.fr",
+        "login": "user4@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User5",
+        "email": "user5@formation.rousseltm.fr",
+        "login": "user5@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User6",
+        "email": "user6@formation.rousseltm.fr",
+        "login": "user6@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User7",
+        "email": "user7@formation.rousseltm.fr",
+        "login": "user7@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User8",
+        "email": "user8@formation.rousseltm.fr",
+        "login": "user8@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User9",
+        "email": "user9@formation.rousseltm.fr",
+        "login": "user9@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User10",
+        "email": "user10@formation.rousseltm.fr",
+        "login": "user10@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User11",
+        "email": "user11@formation.rousseltm.fr",
+        "login": "user11@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User12",
+        "email": "user12@formation.rousseltm.fr",
+        "login": "user12@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User13",
+        "email": "user13@formation.rousseltm.fr",
+        "login": "user13@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User14",
+        "email": "user14@formation.rousseltm.fr",
+        "login": "user14@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    },
+    {
+        "name": "User15",
+        "email": "user15@formation.rousseltm.fr",
+        "login": "user15@formation.rousseltm.fr",
+        "password": "User123!",
+        "folder": [
+            {
+                "folder": "grafana-correction",
+                "role": "Reader"
+            },
+            {
+                "folder": "grafana-formation",
+                "role": "Editor"
+            }
+        ]
+    }
 ]
