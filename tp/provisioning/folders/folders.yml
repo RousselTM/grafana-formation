@@ -1,10 +1,9 @@
 apiVersion: 1
+
 providers:
-  - name: 'Mon Dossier de Provisioning'
-    orgId: 1
-    folder: ''
+  - name: dashboards
     type: file
-    disableDeletion: false
-    editable: false
+    updateIntervalSeconds: 30
     options:
-      path: /etc/grafana/provisioning/dashboards
+      path: /etc/dashboards
+      foldersFromFilesStructure: true

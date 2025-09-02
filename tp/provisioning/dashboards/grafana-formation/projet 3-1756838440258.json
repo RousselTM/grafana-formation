@@ -1,0 +1,255 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 49,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "belydbupqsa2oe"
+      },
+      "description": "Description de mon premier tableau",
+      "fieldConfig": {
+        "defaults": {
+          "actions": [],
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "applyToRow": true,
+              "type": "color-background"
+            },
+            "inspect": false,
+            "tooltip": {
+              "placement": "auto"
+            },
+            "wrapHeaderText": false
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "Voir la formation",
+              "url": "https://elearning.rousseltm.fr/training_chapter?id=${__data.fields.ID}"
+            }
+          ],
+          "mappings": [
+            {
+              "options": {
+                "false": {
+                  "color": "transparent",
+                  "index": 1,
+                  "text": "Non"
+                },
+                "true": {
+                  "color": "super-light-purple",
+                  "index": 0,
+                  "text": "Oui"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-red",
+                "value": 0
+              },
+              {
+                "color": "super-light-orange",
+                "value": 50000
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 700000
+              },
+              {
+                "color": "super-light-green",
+                "value": 800000
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "category"
+            },
+            "properties": [
+              {
+                "id": "custom.align",
+                "value": "right"
+              },
+              {
+                "id": "displayName",
+                "value": "Catégorie"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "image"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "image"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "views"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "lcd",
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Certification"
+            },
+            "properties": [
+              {
+                "id": "links"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-17245430286.patch1",
+      "targets": [
+        {
+          "columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "belydbupqsa2oe"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "https://github.com/RousselTM/grafana-formation/raw/refs/heads/main/tp/data/projet3.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Mon premier tableau",
+      "transformations": [
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "views"
+              }
+            ]
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "id": false,
+              "student": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "category": 3,
+              "id": 0,
+              "image": 1,
+              "title": 2,
+              "views": 4
+            },
+            "renameByName": {
+              "category": "",
+              "certification": "Certification",
+              "id": "ID",
+              "image": "Logo",
+              "title": "Titre",
+              "views": "Vues"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "projet 3",
+  "uid": "29323c32-c933-4261-bfe5-c280fd126520",
+  "version": 28
+}
