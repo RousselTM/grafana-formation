@@ -1,10 +1,10 @@
-folders:
-  - uid: grafana-formation
-    title: formation-grafana
-    provisioned: true
-    permissions:
-      - team: Users
-        role: Editor
-  - uid: grafana-correction
-    title: formation-grafana
-    provisioned: true
+apiVersion: 1
+providers:
+  - name: 'Mon Dossier de Provisioning'
+    orgId: 1
+    folder: ''
+    type: file
+    disableDeletion: false
+    editable: false
+    options:
+      path: /etc/grafana/provisioning/dashboards
