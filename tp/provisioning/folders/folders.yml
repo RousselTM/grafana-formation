@@ -1,6 +1,10 @@
 folders:
-  - name: formation-grafana
+  - uid: grafana-formation
     title: formation-grafana
+    provisioned: true
     permissions:
       - team: Users
         role: Editor
+  - uid: grafana-correction
+    title: formation-grafana
+    provisioned: true
