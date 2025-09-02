@@ -24,7 +24,7 @@
     {
       "datasource": {
         "type": "yesoreyeram-infinity-datasource",
-        "uid": "infinity-infinity"
+        "uid": "infinity"
       },
       "description": "Description de mon premier tableau",
       "fieldConfig": {
