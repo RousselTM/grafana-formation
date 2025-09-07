@@ -1,10 +1,18 @@
 apiVersion: 1
 datasources:
-  - name: Prometheus
+  - name: datasource1
     type: prometheus
     uid: prometheus
     url: http://prometheus:9090
   
-  - name: Infinity
+  - name: datasource2
     type: yesoreyeram-infinity-datasource
     uid: infinity
+
+  - name: datasource3
+    type: Elasticsearch
+    uid: elasticsearch
+    url: https://rousseltm-4707102737.us-east-1.bonsaisearch.net:443
+    basicAuth: true
+    basicAuthUser: k78ykquf60
+    withCredentials: ttjo6ry5mf
