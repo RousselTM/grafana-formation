@@ -10,7 +10,7 @@ datasources:
     uid: infinity
 
   - name: datasource3
-    type: Elasticsearch
+    type: elasticsearch
     uid: elasticsearch
     url: https://rousseltm-4707102737.us-east-1.bonsaisearch.net:443
     #basicAuth: true
