@@ -18,7 +18,7 @@ datasources:
     secureJsonData:
       basicAuthPassword: ttjo6ry5mf
     jsonData:
-      index: kibana_sample_data_flights
+      #index: kibana_sample_data_flights
       includeFrozen": false
       logLevelField: ""
       logMessageField: ""
