@@ -15,4 +15,5 @@ datasources:
     url: https://rousseltm-4707102737.us-east-1.bonsaisearch.net:443
     basicAuth: true
     basicAuthUser: k78ykquf60
-    withCredentials: ttjo6ry5mf
+    secureJsonData:
+      basicAuthPassword: ttjo6ry5mf
