@@ -1,0 +1,29 @@
+apiVersion: 1
+policies:
+  # <int> organization ID, default = 1
+  - orgId: 1
+    receiver: grafana-default-email
+    group_by:
+      - grafana_folder
+      - alertname
+    routes:
+      - receiver: RousselTM
+        matchers:
+          - type: "="
+            label: foo
+            value: bar
+        continue: false
+      - receiver: RousselTM
+        matchers:
+          - type: "="
+            label: qfqd
+            value: qff
+        continue: false
+        group_by:
+          - alertname
+      - receiver: RousselTM
+        matchers:
+          - type: "="
+            label: afec
+            value: qszfgv
+        continue: true
