@@ -42,5 +42,6 @@ contactPoints:
             {{ template "slack.default.text" . }}
             Equipe RousselTM
       - uid: cp_webhook
+        type: webhook
         settings:
           url: https://hooks.slack.com/services/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
