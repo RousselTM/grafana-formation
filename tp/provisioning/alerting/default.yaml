@@ -30,7 +30,7 @@ contactPoints:
           # <string> options: here, channel
           #mentionChannel: here
           # <string> Optionally provide a Slack incoming webhook URL for sending messages, in this case the token isn't necessary
-          url: https://hooks.slack.com/services/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
+          url: https://hooks.slack.com/services/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
           # <string>
           #endpointUrl: https://custom_url/api/chat.postMessage
           # <string>
