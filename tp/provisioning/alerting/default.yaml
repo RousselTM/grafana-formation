@@ -1,0 +1,43 @@
+# config file version
+apiVersion: 1
+
+# List of contact points to import or update
+contactPoints:
+  # <int> organization ID, default = 1
+  - orgId: 1
+    # <string, required> name of the contact point
+    name: RousselTM
+    receivers:
+      # <string, required> unique identifier for the receiver. Should not exceed 40 symbols. Only letters, numbers, - (hyphen), and _ (underscore) allowed.
+      - uid: cp_slack
+        # <string, required> type of the receiver
+        type: slack
+        settings:
+          # <string, required>
+          #recipient: alerting-dev
+          # <string, required>
+          #token: xxx
+          # <string>
+          #username: grafana_bot
+          # <string>
+          icon_emoji: heart
+          # <string>
+          icon_url: https://elearning.rousseltm.fr/admin/images/logo.jpeg
+          # <string>
+          #mentionUsers: user_1,user_2
+          # <string>
+          #mentionGroups: group_1,group_2
+          # <string> options: here, channel
+          #mentionChannel: here
+          # <string> Optionally provide a Slack incoming webhook URL for sending messages, in this case the token isn't necessary
+          url: https://hooks.slack.com/services/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
+          # <string>
+          #endpointUrl: https://custom_url/api/chat.postMessage
+          # <string>
+          #color: {{ if eq .Status "firing" }}#D63232{{ else }}#36a64f{{ end }}
+          # <string>
+          title: |
+            [RousselTM] {{ template "slack.default.title" . }}
+          text: |
+            {{ template "slack.default.text" . }}
+            Equipe RousselTM
