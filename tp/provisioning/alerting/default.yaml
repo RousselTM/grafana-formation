@@ -20,7 +20,7 @@ contactPoints:
           # <string>
           #username: grafana_bot
           # <string>
-          icon_emoji: heart
+          #icon_emoji: heart
           # <string>
           icon_url: https://elearning.rousseltm.fr/admin/images/logo.jpeg
           # <string>

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git pull
+
 echo "📦 Arrêt du stack docker compose..."
 docker compose down -v
 
