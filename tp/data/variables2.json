@@ -1,0 +1,30 @@
+[
+    {
+        "category": "A",
+        "grafana": {
+            "value": "artifacts.elastic.co",
+            "key": "Artefact"
+        }
+    },
+    {
+        "category": "B",
+        "grafana": {
+            "value": "www.elastic.co",
+            "key": "Vitrine"
+        }
+    },
+    {
+        "category": "A",
+        "grafana": {
+            "value": "cdn.elastic-elastic-elastic.org",
+            "key": "CDN"
+        }
+    },
+    {
+        "category": "C",
+        "grafana": {
+            "value": "elastic-elastic-elastic.org",
+            "key": "Autre"
+        }
+    }
+]
