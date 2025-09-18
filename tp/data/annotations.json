@@ -1,0 +1,22 @@
+[
+  {
+    "time": 1658421600000,
+    "title": "Déploiement v1.2.3",
+    "text": "Déploiement de la version 1.2.3 en production. Correctifs de bugs et nouvelles fonctionnalités.",
+    "tags": [
+      "déploiement",
+      "production",
+      "v1.2.3"
+    ]
+  },
+  {
+    "time": 1658428800000,
+    "timeEnd": 1658432400000,
+    "title": "Maintenance BDD",
+    "text": "Mise à jour du serveur de base de données. Pic de latence attendu.",
+    "tags": [
+      "maintenance",
+      "bdd"
+    ]
+  }
+]
