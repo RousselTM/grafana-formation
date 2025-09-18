@@ -1,0 +1,18 @@
+[
+    {
+        "key": "Artefact",
+        "value": "artifacts.elastic.co"
+    },
+    {
+        "key": "Vitrine",
+        "value": "www.elastic.co"
+    },
+    {
+        "key": "CDN",
+        "value": "cdn.elastic-elastic-elastic.org"
+    },
+    {
+        "key": "Autre",
+        "value": "elastic-elastic-elastic.org"
+    }
+]
