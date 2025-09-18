@@ -1,0 +1,18 @@
+[
+    {
+        "A": "Artefact",
+        "B": "artifacts.elastic.co"
+    },
+    {
+        "A": "Vitrine",
+        "B": "www.elastic.co"
+    },
+    {
+        "A": "CDN",
+        "B": "cdn.elastic-elastic-elastic.org"
+    },
+    {
+        "A": "Autre",
+        "B": "elastic-elastic-elastic.org"
+    }
+]
