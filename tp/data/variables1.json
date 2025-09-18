@@ -1,18 +1,22 @@
 [
     {
-        "A": "Artefact",
-        "B": "artifacts.elastic.co"
+        "category": "A",
+        "__value": "artifacts.elastic.co",
+        "__text": "Artefact"
     },
     {
-        "A": "Vitrine",
-        "B": "www.elastic.co"
+        "category": "B",
+        "__value": "www.elastic.co",
+        "__text": "Vitrine"
     },
     {
-        "A": "CDN",
-        "B": "cdn.elastic-elastic-elastic.org"
+        "category": "A",
+        "__value": "cdn.elastic-elastic-elastic.org",
+        "__text": "CDN"
     },
     {
-        "A": "Autre",
-        "B": "elastic-elastic-elastic.org"
+        "category": "C",
+        "__value": "elastic-elastic-elastic.org",
+        "__text": "Autre"
     }
 ]
