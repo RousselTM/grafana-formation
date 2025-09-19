@@ -12,9 +12,6 @@
         "timeEnd": 1758625941000,
         "title": "Maintenance BDD",
         "text": "Mise à jour du serveur de base de données. Pic de latence attendu.",
-        "tags": [
-            "maintenance",
-            "bdd"
-        ]
+        "tags": "maintenance,bdd"
     }
 ]
