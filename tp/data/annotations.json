@@ -5,11 +5,7 @@
         "timeEnd": 1758552741000,
         "title": "Déploiement v1.2.3",
         "text": "Déploiement de la version 1.2.3 en production. Correctifs de bugs et nouvelles fonctionnalités.",
-        "tags": [
-            "déploiement",
-            "production",
-            "v1.2.3"
-        ]
+        "tags": "déploiement, production, v1.2.3"
     },
     {
         "time": 1758624741000,
